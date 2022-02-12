@@ -1,18 +1,15 @@
-export abstract class State {
-    private onEndCallback: () => void;
+import { DocumentElements } from '../models/document-elements';
+import { AppNotifications } from '../models/app-notifications';
 
-    constructor(readonly id: string) { }
+export abstract class State {
+    protected elements: DocumentElements;
+    protected appNotify: (event: AppNotifications) => void;
 
     abstract onStart(): void;
-    abstract onEnd(): void;
 
-    start(onEndCallback: () => void): void {
-        this.onEndCallback = onEndCallback;
+    start(elements: DocumentElements, appNotify: (event: AppNotifications) => void): void {
+        this.elements = elements;
+        this.appNotify = appNotify;
         this.onStart();
-    }
-
-    end(): void {
-        this.onEndCallback();
-        this.onEnd();
     }
 }

@@ -1,11 +1,6 @@
 import { State } from '../classes/state';
 
-export class StateIntro extends State {
+export class StateJokePunchline extends State {
     onStart(): void {
-
-    }
-
-    onEnd(): void {
-
     }
 }

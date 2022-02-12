@@ -34,6 +34,8 @@ http://localhost:3000/joke?id=[ID NUMBER]
 ## Client
 The client for this test is launched through a Node Web Server.
 This Web Server is listening at **http://localhost:8080**.
+*JQuery* haven't used in this test for performance reasons.
+Using vanilla.js as approach (http://vanilla-js.com/).
 
 ## How to run
 Test designed to be executed on **Windows**.<br>

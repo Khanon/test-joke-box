@@ -1,17 +1,14 @@
 import { State } from './state';
+import { DocumentElements } from '../models/document-elements';
+import { AppNotifications } from '../models/app-notifications';
 
 export class StateMachine {
     currentState: State;
 
-    set(state: State): void {
-        if (this.currentState) {
-            this.currentState.end();
-        }
-        this.currentState = state;
-        this.currentState.start(() => this.onEndState());
-    }
+    constructor(private readonly elements: DocumentElements, private readonly appNotify: (event: AppNotifications) => void) {}
 
-    onEndState(): void {
-        this.currentState = undefined;
+    set(state: State): void {
+        this.currentState = state;
+        this.currentState.start(this.elements, this.appNotify);
     }
 }
