@@ -24,6 +24,8 @@ var config = {
           patterns: [
             { from: "assets/*", to: "" },
             { from: "index.html", to: "" },
+            { from: "fonts.css", to: "" },
+            { from: "app.css", to: "" },
           ],
       }),
     ],

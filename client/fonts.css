@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'InterBlack';
+    font-weight: 'bold';
+    src: url('./assets/Inter-Black.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'InterMedium';
+    font-weight: 'bold';
+    src: url('./assets/Inter-Medium.ttf') format('truetype');
+}

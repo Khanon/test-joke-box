@@ -1,0 +1,20 @@
+body {
+    margin: 0px;
+}
+
+#root {
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+#jokebox-title {
+    font-family: 'Inter';
+    font-size: 150px;
+    font-weight: 900;
+
+    width: 100%;
+    position: absolute;
+    text-align: center;
+
+    top: 37%;
+}

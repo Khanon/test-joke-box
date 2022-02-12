@@ -12,18 +12,20 @@ export class WebServer {
 
     listen(): void {
         this.server.set("view options", { layout: true });
-        this.server.use(express.static(__dirname + '/public'));
 
+        // Make public app.js and assets
+        this.server.use("/assets", express.static(__dirname + '/assets'));
+        this.server.use("/fonts.css", express.static(__dirname + '/fonts.css'));
+        this.server.use("/app.css", express.static(__dirname + '/app.css'));
+        this.server.use("/app.js", express.static(__dirname + '/app.js'));
+
+        // Index.html
         this.server.get("/", (req, res) => {
             res.setHeader('Content-Type', 'text/html');
             res.sendFile((__dirname + "/index.html"));
         });
 
-        this.server.get("/app.js", (req, res) => {
-            res.setHeader('Content-Type', 'text/javascript');
-            res.sendFile((__dirname + "/app.js"));
-        });
-
+        // Start server
         this.server.listen(this.port, () => {
             Logger.info(`Web Server started at http://localhost:${this.port}`);
         });
