@@ -10,3 +10,9 @@ Please install <b>Node</b> and <b>npm</b> globally.
 <li><a href="https://www.npmjs.com/">https://www.npmjs.com/</a></li>
 </ul>
 Also install <b>ts-node</b> globally in case you want to test the tool to store the .json file on the database. To do so execute the command <b><i>npm install -g ts-node</i></b>.
+
+## Database
+For this test I created a MySql Database instance on Amazon Web Services.
+The data is stored on <i>jokes</i> table executing the .ts file <i>./server/tools/database-content-store.ts</i>
+To execute this file run the command <b><i>npx ts-node ./server/tools/database-content-store.ts</i></b> from root folder (requires <b>ts-node</b>).
+Anyway the content is already stored on the database.

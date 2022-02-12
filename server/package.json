@@ -5,8 +5,7 @@
   "main": "app.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "start": "node dist/app.js",
-    "debug": "npm run build && npm run start"
+    "start": "ts-node ./src/app.ts"
   },
   "repository": {
     "type": "git",
