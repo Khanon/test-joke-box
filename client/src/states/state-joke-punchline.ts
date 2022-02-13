@@ -3,8 +3,8 @@ import { StateClickable } from './state-clickable';
 
 export class StateJokePunchline extends StateClickable {
     onStart(): void {
-        this.parent.elements.jokeSetupContainer.style.top = '40%';
-        this.parent.elements.jokeSetup.style.fontSize = '40px';
+        this.parent.elements.jokeSetupContainer.style.top = '35%';
+        this.parent.elements.jokeSetup.style.fontSize = '30px';
         this.parent.elements.jokePunchline.innerText = this.parent.joke.punchline;
         this.parent.elements.jokePunchline.classList.add('fade-in-slide-up-800');
         this.initClickable();

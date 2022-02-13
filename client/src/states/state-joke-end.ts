@@ -22,7 +22,7 @@ export class StateJokeEnd extends State<AppData, AppEvents> {
                 this.parent.elements.uiContainer.style.color = 'white';
                 this.parent.elements.connectingIcon.style.backgroundImage = `url('./assets/connecting-icon-white.svg')`;
             }
-            setTimeout(() => this.callbackNotifier(AppEvents.SHOW_NEXT_JOKE), 1000);
+            setTimeout(() => this.callbackNotifier(AppEvents.SHOW_NEXT_JOKE), 1500);
         }, 1000);
     }
 

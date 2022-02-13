@@ -35,7 +35,7 @@ body {
 
 #jokebox-title {
     font-family: 'InterBlack';
-    font-size: 100px;
+    font-size: 80px;
     font-weight: 900;
     transition: font-size 1000ms ease;
 }
@@ -59,7 +59,7 @@ body {
 
 #joke-setup {
     font-family: 'InterMedium';
-    font-size: 70px;
+    font-size: 50px;
     font-weight: 900;
     transition: all 1000ms ease;
 }
@@ -70,7 +70,7 @@ body {
 
 #joke-punchline {
     font-family: 'InterMedium';
-    font-size: 70px;
+    font-size: 50px;
     font-weight: 900;
     transition: all 1000ms ease;
 }
@@ -80,8 +80,8 @@ body {
 }
 
 #hand {
-    width: 86px;
-    height: 112px;
+    width: 64px;
+    height: 84px;
     opacity: 0;
     transition: opacity 600ms ease;
 }

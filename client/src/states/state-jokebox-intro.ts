@@ -9,7 +9,7 @@ export class StateJokeboxIntro extends State<DocumentElements, AppEvents> {
         setTimeout(() => this.parent.jokeboxTitle.classList.remove("fade-in-slide-left-800"), 800);
         setTimeout(() => {
             this.parent.jokeboxTitleContainer.style.top= "13%";
-            this.parent.jokeboxTitle.style.fontSize = '50px';
+            this.parent.jokeboxTitle.style.fontSize = '20px';
         }, 1000);
         setTimeout(() => {
             this.callbackNotifier(AppEvents.SHOW_NEXT_JOKE);
