@@ -1,85 +1,82 @@
 import { Logger } from './classes/logger';
 import { StateMachine } from './classes/state-machine';
 import { StateJokeboxIntro } from './states/state-jokebox-intro';
-import { DocumentElements } from './models/document-elements';
-import { AppNotifications } from './models/app-notifications';
-import { Joke } from './models/joke';
+import { AppEvents } from './models/app-events';
 import { StateJokeSetup } from './states/state-joke-setup';
+import { JokeLoader } from './classes/joke-loader';
+import { AppData } from './models/app-data';
+import { StateJokePunchline } from './states/state-joke-punchline';
+import { StateJokeEnd } from './states/state-joke-end';
 
 export class App {
-    elements: DocumentElements;
+    data: AppData = {};
     states: StateMachine;
-    currentJoke: Joke;
-    nextJoke: Joke;
+    jokeLoader: JokeLoader = new JokeLoader();
 
     // Start application
     start(): void {
         Logger.info("App started.");
 
         // Store all elements
-        this.elements = {
+        let jokeSetupContainerElement = document.getElementById('joke-setup-container');
+        let jokeSetupElement = document.getElementById('joke-setup');
+        this.data.elements = {
+            uiContainer: document.getElementById("ui-container"),
+            jokeboxTitleContainer: document.getElementById("jokebox-title-container"),
             jokeboxTitle: document.getElementById("jokebox-title"),
+            connectingIcon: document.getElementById("connecting-icon"),
+            jokeSetupContainer: jokeSetupContainerElement,
+            jokeSetupContainerInitialStyle: {...jokeSetupContainerElement.style},
+            jokeSetup: jokeSetupElement,
+            jokeSetupInitialStyle: {...jokeSetupElement.style},
+            jokePunchlineContainer: document.getElementById('joke-punchline-container'),
+            jokePunchline: document.getElementById('joke-punchline'),
+            clickArea: document.getElementById('click-area'),
+            hand: document.getElementById('hand'),
         }
 
-        // Initialize state machine and get next joke
-        this.getNextJoke();
-        this.states = new StateMachine(this.elements, (event) => this.notify(event));
-
-        // Run first state (intro jokebox)
-        setTimeout(() => this.states.set(new StateJokeboxIntro()), 300);
+        // Initialize state machine, get next joke and start intro state
+        this.states = new StateMachine();
+        this.jokeLoader.getNextJoke();
+        setTimeout(() => this.states.set(new StateJokeboxIntro(this.data.elements, (event) => this.notify(event))), 300);
     }
 
     // Notify events from states. This could be handled from RXJS subscription, but for this test we go vanilla.
-    notify(event: AppNotifications): void {
+    notify(event: AppEvents): void {
         switch (event) {
-            case AppNotifications.INTRO_END:
-                if (this.nextJoke) {
-                    this.currentJoke = this.nextJoke;
-                    this.nextJoke = undefined;
-                    this.getNextJoke();
-                    this.states.set(new StateJokeSetup(this.currentJoke));
-                } else {
-                    // Show Connecting...
-                    setTimeout(() => this.notify(AppNotifications.INTRO_END), 5000);
-                }
+            case AppEvents.SHOW_NEXT_JOKE:
+                this.showNextJokeSetup();
                 break;
-            case AppNotifications.JOKE_END:
+            case AppEvents.JOKE_SETUP_END:
+                this.states.set(new StateJokePunchline(this.data, (event) => this.notify(event)));
+                break;
+            case AppEvents.JOKE_PUNCHLINE_END:
+                this.states.set(new StateJokeEnd(this.data, (event) => this.notify(event)));
                 break;
         }
     }
 
-    // Request next joke
-    getNextJoke(): void {
-        Logger.info("Request next joke.");
-        fetch('http://localhost:3000/randomJoke').then(result => {
-            if (result.ok) {
-                result.json().then(data => {
-                    try {
-                        Logger.info("Got next joke:", JSON.stringify(data));
-                        this.nextJoke = {
-                            id: data[0].id,
-                            type: data[0].type,
-                            setup: data[0].setup,
-                            punchline: data[0].punchline,
-                        };
-                    } catch(error) {
-                        this.getNextJokeError();
-                    }
-                }).catch(error => {
-                    this.getNextJokeError();
-                });
-            } else {
-                this.getNextJokeError();
-            }
-        }).catch(error => {
-            this.getNextJokeError();
-        });
-        // This callback hell could be fixed using RXJS instead of fetch. For simplicity I keep the fetch.
+    // Show next joke
+    showNextJokeSetup(): void {
+        Logger.info('Show next joke');
+        if (this.jokeLoader.joke) {
+            this.data.joke = this.jokeLoader.joke;
+            this.jokeLoader.getNextJoke();
+            this.hideConnecting();
+            this.states.set(new StateJokeSetup(this.data, (event) => this.notify(event)));
+        } else {
+            this.showConnecting();
+            setTimeout(() => this.showNextJokeSetup(), 5000);
+        }
     }
 
-    getNextJokeError(): void {
-        Logger.info("Couldn't get Joke from server, retrying in 5 seconds.");
-        setTimeout(() => this.getNextJoke(), 5000);
+    // Connecting label
+    showConnecting(): void {
+        this.data.elements.connectingIcon.style.opacity = '1';
+    }
+
+    hideConnecting(): void {
+        this.data.elements.connectingIcon.style.opacity = '0';
     }
 }
 

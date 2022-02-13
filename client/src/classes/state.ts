@@ -1,15 +1,14 @@
-import { DocumentElements } from '../models/document-elements';
-import { AppNotifications } from '../models/app-notifications';
-
-export abstract class State {
-    protected elements: DocumentElements;
-    protected appNotify: (event: AppNotifications) => void;
+export abstract class State<T, N = any> {
+    constructor(protected readonly parent: T, protected readonly callbackNotifier?: (event: N) => void) {}
 
     abstract onStart(): void;
+    abstract onEnd(): void;
 
-    start(elements: DocumentElements, appNotify: (event: AppNotifications) => void): void {
-        this.elements = elements;
-        this.appNotify = appNotify;
+    start(): void {
         this.onStart();
+    }
+
+    end(): void {
+        this.onEnd();
     }
 }

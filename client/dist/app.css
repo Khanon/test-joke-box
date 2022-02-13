@@ -1,0 +1,68 @@
+/** Primitives */
+
+body {
+    margin: 0px;
+    overflow: hidden;
+}
+
+/** Classes (shared styles) */
+
+.container-centered {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+}
+
+.container-centered-child {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+/** Ids */
+
+#ui-container {
+    min-width: 100vw;
+    min-height: 100vh;
+    position: relative;
+}
+
+#jokebox-title-container {
+    top: 42%;
+    transition: all 1200ms ease;
+    display: none;
+}
+
+#jokebox-title {
+    font-family: 'Inter';
+    font-size: 70px;
+    font-weight: 900;
+}
+
+#connecting-icon-container {
+    top: 42%;
+    display: none;
+}
+
+#connecting-icon {
+    background-image: url('./assets/connecting-icon.svg');
+}
+
+#joke-setup {
+
+}
+
+#joke-punchline {
+
+}
+
+#hand {
+
+}
+
+#pointer-area {
+    position: relative;
+}
+
+#pointer {
+
+}

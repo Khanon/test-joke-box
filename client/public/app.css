@@ -1,0 +1,94 @@
+/** Primitives */
+
+body {
+    margin: 0px;
+    overflow: hidden;
+}
+
+/** Classes (shared styles) */
+
+.container-centered {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+}
+
+.container-centered-child {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+/** Ids */
+
+#ui-container {
+    min-width: 100vw;
+    min-height: 100vh;
+    position: relative;
+    transition: all 1000ms linear;
+}
+
+#jokebox-title-container {
+    top: 42%;
+    display: none;
+    transition: all 1200ms ease;
+}
+
+#jokebox-title {
+    font-family: 'InterBlack';
+    font-size: 100px;
+    font-weight: 900;
+    transition: font-size 1000ms ease;
+}
+
+#connecting-icon-container {
+    top: 42%;
+}
+
+#connecting-icon {
+    width: 70px;
+    height: 70px;
+    opacity: 0;
+    background-image: url('./assets/connecting-icon-black.svg');
+    transition: all 1200ms ease;
+}
+
+#joke-setup-container {
+    top: 42%;
+    transition: all 1200ms ease;
+}
+
+#joke-setup {
+    font-family: 'InterMedium';
+    font-size: 70px;
+    font-weight: 900;
+    transition: all 1000ms ease;
+}
+
+#joke-punchline-container {
+    top: 42%;
+}
+
+#joke-punchline {
+    font-family: 'InterMedium';
+    font-size: 70px;
+    font-weight: 900;
+    transition: all 1000ms ease;
+}
+
+#hand-container {
+    top: 65%;
+}
+
+#hand {
+    width: 86px;
+    height: 112px;
+    opacity: 0;
+    transition: opacity 600ms ease;
+}
+
+#click-area {
+    min-width: 100vw;
+    min-height: 100vh;
+    top: 0px;
+    position: absolute;
+}

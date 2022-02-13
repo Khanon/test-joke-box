@@ -43,6 +43,15 @@ Execute batch file **build.bat** to build the project. This action is required o
 Execute batch file **start.bat** to start the microservices.
 Open **http://localhost:8080** on browser to test the Web client.<br>
 
+## Use cases
+- Run only the <i>client</i> without <i>server</i>
+  - The Web should load and show 'connecting' message after the intro is done
+- Run the <i>client</i> and <i>server</i> (happy path)
+  - The web should work as expected
+- Turn off the server after showing a joke
+  - For the next joke the Web should show again the 'connecting' message
+- If the user don't click in 3 seconds, a hand clicking will be displayed
+
 ## Notes to improve
 **GraphQL** could be implemented in the project to improve the performance of requests.
 Code should be improved in many areas:

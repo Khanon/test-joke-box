@@ -1,5 +1,7 @@
 import { Connection } from "mysql2";
 
+import { Logger } from '../classes/logger';
+
 export class QueryHandler {
     private connection: Connection
     private readonly queryList: string[] = [];
@@ -13,7 +15,7 @@ export class QueryHandler {
     // Run a single query
     queryExec(query: string): Promise<any> {
         return new Promise((resolve, reject) => {
-            console.log("Exec query: " + query);
+            Logger.info("Exec query: " + query);
             this.connection.query(query, (err, result) => {
                 if (err) {
                     reject(err);

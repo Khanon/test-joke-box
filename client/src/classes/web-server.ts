@@ -13,9 +13,10 @@ export class WebServer {
     listen(): void {
         this.server.set("view options", { layout: true });
 
-        // Make public app.js and assets
+        // Make public files and assets
         this.server.use("/assets", express.static(__dirname + '/assets'));
         this.server.use("/fonts.css", express.static(__dirname + '/fonts.css'));
+        this.server.use("/animations.css", express.static(__dirname + '/animations.css'));
         this.server.use("/app.css", express.static(__dirname + '/app.css'));
         this.server.use("/app.js", express.static(__dirname + '/app.js'));
 

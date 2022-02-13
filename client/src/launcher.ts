@@ -1,6 +1,7 @@
 import { WebServer } from './classes/web-server';
+import { Logger } from './classes/logger';
 
-console.log("Launching Web Server...");
+Logger.info("Launching Web Server...");
 
 const webServer = new WebServer();
 webServer.listen();

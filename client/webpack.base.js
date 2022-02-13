@@ -22,10 +22,8 @@ var config = {
     plugins: [
       new CopyPlugin({
           patterns: [
-            { from: "assets/*", to: "" },
-            { from: "index.html", to: "" },
-            { from: "fonts.css", to: "" },
-            { from: "app.css", to: "" },
+            { from: "assets/*" },
+            { from: "public" },
           ],
       }),
     ],
