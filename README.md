@@ -47,7 +47,6 @@ In case you can't execute those batch files, please follow next steps:
 - Run the command 'npm install'
 - Run the command 'npm run build'
 - Run the command 'node ./dist/launcher.js'
-<br>
 - Open a new terminal
 - Go to <i>server</i> directory
 - Run the command 'npm install'
