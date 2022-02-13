@@ -53,7 +53,7 @@ body {
 }
 
 #joke-setup-container {
-    top: 42%;
+    top: 48%;
     transition: all 1200ms ease;
 }
 
@@ -65,7 +65,7 @@ body {
 }
 
 #joke-punchline-container {
-    top: 42%;
+    top: 48%;
 }
 
 #joke-punchline {
@@ -76,7 +76,7 @@ body {
 }
 
 #hand-container {
-    top: 65%;
+    top: 70%;
 }
 
 #hand {

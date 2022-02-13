@@ -5,13 +5,12 @@ export class StateJokeSetup extends StateClickable {
     onStart(): void {
         this.parent.elements.jokeSetup.innerText = this.parent.joke.setup;
         this.parent.elements.jokeSetup.classList.add('fade-in-slide-up-800');
-        this.initialize();
+        this.initClickable();
     }
 
     onEnd(): void {
         this.parent.elements.jokeSetup.classList.remove('fade-in-slide-up-800');
-        this.parent.elements.hand.style.opacity = '0';
-        this.release();
+        this.releaseClickable();
     }
 
     onClick(): void {

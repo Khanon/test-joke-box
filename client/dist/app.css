@@ -24,45 +24,71 @@ body {
     min-width: 100vw;
     min-height: 100vh;
     position: relative;
+    transition: all 1000ms linear;
 }
 
 #jokebox-title-container {
     top: 42%;
-    transition: all 1200ms ease;
     display: none;
+    transition: all 1200ms ease;
 }
 
 #jokebox-title {
-    font-family: 'Inter';
-    font-size: 70px;
+    font-family: 'InterBlack';
+    font-size: 100px;
     font-weight: 900;
+    transition: font-size 1000ms ease;
 }
 
 #connecting-icon-container {
     top: 42%;
-    display: none;
 }
 
 #connecting-icon {
-    background-image: url('./assets/connecting-icon.svg');
+    width: 70px;
+    height: 70px;
+    opacity: 0;
+    background-image: url('./assets/connecting-icon-black.svg');
+    transition: all 1200ms ease;
+}
+
+#joke-setup-container {
+    top: 48%;
+    transition: all 1200ms ease;
 }
 
 #joke-setup {
+    font-family: 'InterMedium';
+    font-size: 70px;
+    font-weight: 900;
+    transition: all 1000ms ease;
+}
 
+#joke-punchline-container {
+    top: 48%;
 }
 
 #joke-punchline {
+    font-family: 'InterMedium';
+    font-size: 70px;
+    font-weight: 900;
+    transition: all 1000ms ease;
+}
 
+#hand-container {
+    top: 70%;
 }
 
 #hand {
-
+    width: 86px;
+    height: 112px;
+    opacity: 0;
+    transition: opacity 600ms ease;
 }
 
-#pointer-area {
-    position: relative;
-}
-
-#pointer {
-
+#click-area {
+    min-width: 100vw;
+    min-height: 100vh;
+    top: 0px;
+    position: absolute;
 }

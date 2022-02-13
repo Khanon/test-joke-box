@@ -5,11 +5,12 @@
   "main": "app.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "start": "ts-node ./src/app.ts"
+    "start": "ts-node ./src/app.ts",
+    "store-content-database": "npx ts-node ./tools/database-content-store.ts"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/Khanon/test-joke-box"
   },
   "author": "Lorenzo Portillo",
   "license": "",
