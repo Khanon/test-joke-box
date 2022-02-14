@@ -61,6 +61,7 @@ database.onConnectionSuccess = () => {
 
     // Run queries
     database.queryExecQueue().then(result => {
+        Logger.info('Data stored correctly.');
         process.exit();
     }).catch(error => {
         Logger.error(error);
