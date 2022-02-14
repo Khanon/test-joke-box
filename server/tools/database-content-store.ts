@@ -24,6 +24,7 @@ let fixDBText = (text: string)  => {
 }
 
 database.onConnectionFail = (error) => {
+    Logger.error(error);
     process.exit();
 }
 
