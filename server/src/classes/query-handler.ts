@@ -6,8 +6,6 @@ export class QueryHandler {
     private connection: Connection
     private readonly queryList: string[] = [];
 
-    constructor() {}
-
     setConnection(connection: Connection): void {
         this.connection = connection;
     }

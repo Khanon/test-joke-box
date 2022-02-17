@@ -10,7 +10,7 @@ import { StateJokeEnd } from './states/state-joke-end';
 
 export class App {
     data: AppData = {};
-    states: StateMachine;
+    states: StateMachine = new StateMachine();
     jokeLoader: JokeLoader = new JokeLoader();
 
     // Start application
@@ -36,7 +36,6 @@ export class App {
         }
 
         // Initialize state machine, get next joke and start intro state
-        this.states = new StateMachine();
         this.jokeLoader.getNextJoke();
         setTimeout(() => this.states.set(new StateJokeboxIntro(this.data.elements, (event) => this.notify(event))), 300);
     }
